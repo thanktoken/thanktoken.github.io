@@ -1,3 +1,3 @@
 = ThankToken
 
-This repository contains the https://thanktoken.github.io[web-site (github pages)] of ThankToken.
+This repository contains the https://thanktoken.github.io[web-site (github pages)] of ThankToken. See also the link:wiki[] for conceptional and technical details.
