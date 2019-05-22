@@ -1,0 +1,44 @@
+= Concept of Thank Tokens
+
+This page explains the general principle how link:ThankToken[]s are created and gives rationales for the approach.
+
+== Introduction
+
+Before we get started we want to reflect existing solutions and motivate our decisions based on this. So let us have a look at the extremes:
+
+=== Estabilished Financial System
+Our current banking system has the following aspects:
+
+* *_Low transparency_*: You can check and verify your personal ledger but in general it is very intransparent.
+* *_Very centralized_*: Accounts, Transactions, Balances, etc. are entirely managed by the according bank. You need to fully trust the bank as the service provider.
+* *_Controlled privacy_*: All your transactions are visible for you and the service providers (your bank and potentially some other financial institutes). However, they are kept secret for others.
+* *_Credit based creation_*: The money is created from debt. For the dept someone has to pay interest. This has severe implications that are discussed on the web. Research and make up your own oppinion. It is not the purose of this project to go into the details of this discussion. If you see some problems here, you are in the right place.
+* *_Established and reliable_*: No matter what you think about our current monetary and banking system - it has proven to work on a large scale. A world wide system allows everyone to transfer or receive money around the globe. All physical and virtual shops accept your conventional payment.
+* *_Relatively efficient_*: Even though a transaction typically takes one or even multiple days, the systems are relatively efficient regarding to the technical resources involved and the scalability to the entire world. However, regarding to human resources the efficiency is rather poor as many people are involved to operate it.
+
+It is up to you which of the aspects you see as disadvantage and which as advantage.
+
+=== Bitcoin
+
+Bitcoin showed up during a big crisis of our financial system. It is extremely different and contrary to it on purpose. As the first serious alternative implementation the bitcoin blockchain has the followin aspects:
+
+* *_High transparency_*: Everybody can see and verify every transaction. It is hard to imagine anyhting more transparent.
+* *_Very decentralized_*: There is no centralized entity in the bitcoin blockchain. The only centralized aspect is the acceptance of the algorithm behind it. No single node (computer) or institute is required to operated it. Hence, nobody can easily take control over the bitcoin blockchain. As history has already shown there is a threat that someone who owns the majority of the involved computing resources can manipulate the blockchain (51% attack).
+* *_Pseudonymous_*: An end-user of bitcoin is pseudonymous but not anonymous. He is identified by the cryptographic key pair esp. the public key and the bitcoin address derived from its hash. If you are connecting your personal identity with a bitcoin address (e.g. by sending it from your realname email) the receiver can associate all the transactions done with the same key pair with you. By publishing this information he could unmask these transactions.
+* *_Mining based creation_*: Bitcoins are only created from mining. Further the creation process is limited. At some point in the future there will be no more mining fees (and miners can only benefit from transaction fees). This is limiting the absolute amount of bitcoins, what makes them somewhat more trustworthy as value store. However, humans make mistakes and therefore bitcoins can be lost forever when their private key is lost. This already happend and could become a problem over a long time.
+* *_Proven but experimental_*: Besides the huge criticism, bitcoin has proven to work reliable for many years now. However, it is still a young technology and only a minority of mankind ever used cryptocurrencies at all. As bitcoins can be exchanged with regular currencies they are treated like stock or share. Trends and hype-phases have already shown severe limitations where transaction fees skyrocketet. For an approach that promised to solve micro-payments, this is kind of ironic. However, bitcoin (as well as new cryptos) is continuously evolving and with the lightning network there are chances for improvement.
+* *_Resource intensive_*: One of the major critics of the bitcoin blockchain is its waste of computing resources and according energy. By design the blockchain does not really scale: When more computing power is added, more energy is wasted without increasing the efficiency. This is because every node has to do the same work. Compared to _visa_ or _master card_ the _bitcoin blockchain_ is very slow. Again this is by design as the _difficulty_ for the _prove of work_ is automatically increased when more transactions are processed per time. Wheter the lightling network will properly solve these issues and bitcoin will become a system that scales for worldwide payment is still in question.
+
+Again it is up to you which of the aspects you see as pros and cons.
+
+== Reflection
+
+Are there only these extremes? After the financial crisis we might have lost trust in the financial sector. Is the concequnece that we do not trust anybody except the algorithm? As we are wasting gigantic amounts of computing power and electricity with blockchains already it is probably time to step back and ask some questions:
+
+* What do we need to decentralize?
+* How can we balance between trust in central entities and trust in cryptography?
+* When it comes to a consensus in case of a double spending the only important thing is an agreement of what is valid (came first). Do we need _proof of work_ and massively waste resources only for the sake of a decentralized decision about this?
+
+== From Blockchain to Tokenchain
+
+The idea of link:ThankToken[] is to create a cryptocurrency that is simpler and utilizes the resources very efficiently. A link:ThankToken[] is the analogy of a physical coin or any form of a good. It has a particular value and can only have one owner at a time. It has a chain of transactions that transfer the token from one owner to the next. Therefore the transaction contains the public key of the next owner and is signed with the private key of the previous owner. 

@@ -1,0 +1,34 @@
+= API
+
+The API of link:ThankToken[] servers has the following scheme:
+
+```
+https://«hostname»/«http-verb»/«version»/«location»/«entity»/«details»
+```
+
+.Segments of REST API
+[options="header"]
+|====
+|*Segment*|*Description*|*Example*
+|«hostname»|DNS name or IP of the server|`thanks.net`
+|«http-verb»|`GET` for "static" reading, `POST` for dynamic requests|`GET`
+|«version»|The link:ThankVersion[]|`v2`
+|«location»|The path of the link:ThankLocation[], typically `«sector»/«area»/«region»`|`87/G7/MX`
+|«entity»|The requested object type.|`token`
+|«detail»|The further API path|`Thanks/2020/01/31/`
+|====
+
+== Get Token
+
+```
+https://«hostname»/GET/«version»/«location»/token/«currency»/«timestamp»/«object»
+```
+
+.Specific segments of GET token
+[options="header"]
+|====
+|*Segment*|*Description*|*Example*
+|«currency»|The requested currency.|`Thanks`
+|«timestamp»|The creation timestamp from the token header in the form `«YYYY»/«dd»/«mm»`|`2020/01/31/`
+|====
+

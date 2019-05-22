@@ -1,0 +1,68 @@
+= Creation of ThankTokens
+
+== How is a token initially created?
+
+With currencies like link:Thanks[] tokens are created by the participating persons. But if people can create their own tokens and value this has to follow strict rules.
+
+== Person Income
+
+If everybody is allowed to create his own person income, how can we prevent fraud?
+
+* One could create the wrong amount. This is easy to prevent as we can easily validate that the proper amount defined by the currency is generated. Eveything else is invalid and will be rejected.
+* One could create the correct amount but multiple times (e.g. twice per day). As every change has to be published to the open ledger, the ledger can validate that the same identity only has one creation per day. Multiple creations on the same day will be invalid and will be rejected.
+* One could create multiple identities to generate the person income multiple times each time following the rules. This is the really tricky part. 
+
+____
+We need to ensure that one natural person can only have one digital identity permitted to create tokens.
+____
+
+== Identification of natural persons
+
+The challenge is to find a balance between authenticity and pricacy. These two aspects are quite contradictory. If we would not care about privacy the participants could provide all personal data like name, birthday, scan of their id-card and sign all this with their private key. Finally they would publish this in the cloud. This way a duplicate detection could easily prevent multiple identities for the same natural person. However, this is an inacceptable nightmare from a privacy perspective.
+
+In link:TankToken[] every identity is represented by a public key of a key pair. Every person can have as many identities as he likes. For a given timeframe only one of his identities can be granted permission to create tokens. It therefore has to be published together with the link:ThankLocation[] of the owner and the validity range. All data is signed with the corresponding private key.
+The person has to get certified by the identification office responsible for this link:ThankLocation[]. As a result his identitiy will also be signed with the official key of that location. Their public key is also published and signed with the private key of the link:ThankLocation#area[]. Therefore during the validation the validity of the signature chain can be checked. Also everybody can check how many natural persons are registered within a specific link:ThankLocation#region[region] what gives additional plausibility.
+
+The critical part is the certification of the identification offices. These are run by people committed to the idea of link:ThankToken[]. They are educated for their task and are also audited.
+To ensure the unique identity of a person they take several characteristics of the person to be certified:
+
+* Birth-data
+** Given-name
+** Date-of-birth
+** City-of-birth
+* Fingerprint
+* Iris
+
+Any form of identity (like passport as available) is inspected, but not scanned. From the fingerprint and iris scan a unique pattern is extracted.
+Now the following combinations of this data is appended and finally hashed:
+* Fingerprint-pattern
+* Iris-pattern
+* Fingerprint-pattern + birth-data
+* Iris-pattern + birth-data
+
+These hashes, the current timestamp and link:ThankLocation[] are signed with the private key of the certification office and send to identification service of the root certification office. For the transfer the data is encrypted with the public key of the root certification office in addition to TLS. The identification service decrypts the data and validates the signature. If all is valid, it will search for matches of the given identity hashes in his database. If no match is detected, a new identity is created with a new random UUID and stored in the database. Otherwise for each hash the UUID of the existing hashes are collected. As a result the  
+The root office provides a service. 
+    Eine digitale Identität ist erst dann für die Generierung von Grundeinkommen zulässig, wenn eine Beglaubigung der zugehörigen natürlichen Person erfolgt ist.
+    Bestimmte engagierte Personen, welche für das Kryptogeldprojekt einstehen, können als solche Beglaubiger "ausgebildet" werden und werden dazu selbst mit ihrer Identität entsprechend von einer zentralen und von der Gemeinschaft vertrauten Autorität signiert.
+    Es gibt inzwischen zuverlässige Techniken biometrische Identifizierungen einer Person sehr einfach und fälschungssicher vorzunehmen. Beispiele sind Photo der Iris, Fingerabdruck, etc. Diese Daten können normalisiert werden, wodurch ein reproduzierbares "Muster-Ergebnis" entsteht. Verfahren dazu existieren und können wiederverwendet werden. Aus dem "Muster-Ergebnis" wird ein Hash generiert, welcher dann pseudonymisiert ist. Derartige Hashses können mit der digitalen Identität ihres Besitzers verknüpft werden. Die sensiblen persönlichen Daten (Iris-Photo, Fingerabdruck, etc. und deren Muster-Ergebnis) brauchen dazu gar nicht gespeichert zu werden. Lediglich der Hash solcher Merkmale wird aufbewahrt (Datensparsamkeit, GDPR/DSGVO). Das Verfahren ist reproduzierbar und liefert zur gleichen Person nachträglich wieder die gleichen Hash-Werte. Anhand der Hash-Werte kann man aber ohne die sensiblen Personendaten nicht auf die natürliche Person zurück schließen. Normale Photos einer Person (Facebook, Zeitung, Homepage, etc.) reichen von der Auflösung jedoch nicht aus, um den korrekten Hash der Iris zu ermitteln.
+    Die Beglaubiger prüfen nun eine natürliche Person bei der "Beantragung zum Grundeinkommen". Sie ermitteln die Hashes der Merkmale der Person, welche dazu physisch mit ihnen in Kontakt tritt. Sie verknüpfen die beantragte digitale Identität mit diesen Hashes und prüfen dabei gleichzeitig, dass nicht unter einem der Hashes bereits eine Identität zum Grundeinkommen beglaubigt ist. Damit ist ein Missbrauch feststellbar und kann verhindert werden. Es kann natürlich auch ein Wechsel der digitalen Identität an dieser Stelle erfolgen (bisherige Identität wird invalidiert und die neue Identität beglaubigt).
+    Die eigentliche Beglaubigung erfolgt dann nach der Validierung durch Signierung der digitalen Identität durch den Beglaubiger. Dabei wird gleichzeitig ein Ablaufdatum für die Identität festgelegt (z.B. heute + 2 Jahre).
+    Um potentiellen Missbrauch noch schwerer zu machen, könnte es sogar erforderlich gemacht werden, dass mehrere (2 sollte ausreichen) unterschiedliche Beglaubiger unabhängig eine solche Beglaubigung und Signierung vorgenommen haben (Ablaufdatum wird vom 1. Antrag übernommen).
+    Bei der "Beglaubigung" kann gleichzeitig eine Art "Wertevertrag" geschlossen werden, um zu vermitteln, dass der Antragnehmer sich im Gegenzug zum Erhalt des Grundeinkommens auch moralisch verpflichtet, dass er sich nach seinen Möglichkeiten und Fähigkeiten in die Gemeinschaft einbringt, usw.
+    Alle Identitäten sind dann letztlich veröffentlicht aber pseudonymisiert. Jeder kann mit dem privaten Schlüssel der gültigen und beglaubigten Identität Grundeinkommen generieren. Alle anderen können verifizieren, dass die Identität, welche dazu verwendet wurde, zu diesem Zeitpunkt gültig und für das Grundeinkommen berechtigt war.
+    Die eigentliche Generierung wird dann für den Nutzer automatisiert. Der Nutzer kann das auf seinem Rechner/Server/Handy automatisch ablaufen lassen. Es kann visionär zukünftig auch bezahlte Bankdienstleistungen geben, welche dies für natürliche Personen sicher übernehmen, wenn sich diese nicht darum kümmern wollen, ob ihr Rechner auch läuft und das Grundeinkommen auch nicht vergessen wird zu generieren. Grundeinkommen kann jedoch nicht nachträglich für die Vergangenheit generiert werden.
+    Ob die Hashes der Identitätsmerkmale natürlicher Personen für alle öffentlich abrufbar sind (einfachste Lösung) oder nur verifizierbar sind (komplizierter, aber ebenfalls denkbar) kann noch separat festgelegt werden.
+
+Weitere Gedanken zur Einführung:
+
+    Hier haben wir mal wieder die Szenarien wie "autakes Aussteigerdorf nur mit GGG-Kryptowährung", Ko-existenz mit Euro und aktuellem Leben, Ausgabe durch Geschäfte, Rabattpunkte, usw. diskutiert.
+    Die Idee der Beteiligung von Geschäften haben wir favorisiert, jedoch nicht, dass die Geschäfte nicht die Währung ausgeben oder Rabattpunkte vergeben, sondern lediglich sich verpflichten, einen Mindestprozentsatz des Kaufpreis in der neuen Währung zu akzeptieren. Argument für die Geschäfte ist, dass sie damit Kundengewinnung und -bindung erreichen (Extrema: Es kommt niemand, der mit der neuen Währung bezahlen will und damit passiert einfach gar nix vs. die Leute rennen dem Geschäft die Bude ein und es gibt eine massive Umsatzsteigerung, was durch die Deckelung des Prozentsatz am Kaufpreis selbst bei fehlendem Vertrauen in die Währung kein Risiko darstellt).
+    Auch hatten wir wieder die Diskussionen, ob man zum Anlaufen des Systems eine Koppelung des Grundeinkommens an die durch Geschäfte auch physisch kaufbare Warenmenge schafft oder eine Staffelung bei der Einführung vorsieht: Grundeinkommen steigert sich zeitlich (z.B. quartalsweise) bis der geplante Maximalbetrag erreicht ist.
+    Letztlich finden wir es beide einfacher, eine ideelle Größe (z.B. 1 Geldeinheit ~ 1 Brot / 10 Geldeinheiten ~ 1h Arbeit) zur Orientierung zu geben, aber ansonsten nicht weiter in Geldmengensteuerung und Preisfindung einzugreifen. Sicher wäre hier eine Verprobung durch ein (Online-)Spiel ein spannender Erkennisgewinn, denn dieses Thema hat auch Marc und Dag schon viel beschäftigt.
+
+Gedanken, um das Ganze weiter voranzubringen:
+
+    Wir planen einen Folgetermin im Januar. Vorschläge sind jeweils Mittwoch um 19 Uhr: 16.1. oder 23.1.2019. @Janis: wäre das bei Dir machbar? Ort ist noch festzulegen. Wir sind da beide flexibel/offen.
+    Kontaktaufnahme zur Grundeinkommensgruppe Hanau via Moritz
+    Jörg plant Vortrag zu Kryptogeld an Hochschule in Frankfurt (via Fachschaft Informatik), um potentielle Informatiker zu gewinnen sowie weiter zum Bewusstseinswandel beizutragen. Einen solchen Vortrag hat Jörg in 2019 schon an der Uni Kaiserslautern an der Angel.
+    Ggf. die Kontakte von Moneta zum "Blockchain-Institut" ermitteln und nutzen.

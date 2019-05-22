@@ -10,7 +10,6 @@ $(document).ready(function() {
 function init() {
   window.setTimeout(function() { start() }, 100);
 }
-
 function start() {
 	$('body').removeClass("loading").addClass('loaded');	
 }
