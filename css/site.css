@@ -107,6 +107,7 @@ header {
 }
 
 .box-container {
+  clear:both;
 }
 .box-element {
   width: 96%;
